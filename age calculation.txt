@@ -1,0 +1,37 @@
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Scanner;
+
+
+
+public class Age {
+
+    private int date ;
+    private int month;
+    private int year;
+    public static void main(String[] args){
+
+
+        Scanner input=new Scanner(System.in);
+        Age ashik=new Age();
+        System.out.println("enter your birth date= ");
+        ashik.date= input.nextInt();
+        System.out.println("enter your birth month");
+        ashik.month=input.nextInt();
+        System.out.println("enter your birth year=");
+        ashik.year=input.nextInt();
+        if((ashik.date >31) && (ashik.month>12) && (ashik.year==0))
+        System.out.println("enter a valid data");
+        else{
+            LocalDate birthDate=LocalDate.of(ashik.year,ashik.month,ashik.date);
+            LocalDate todayDate=LocalDate.now();
+            Period period=Period.between(birthDate,todayDate);
+            System.out.println("Days: "+period.getDays());
+            System.out.println("Months: "+period.getMonths());
+            System.out.println("Years: "+period.getYears());
+        }
+
+    }
+}
